@@ -1,0 +1,48 @@
+﻿@model web_avanzada_fe.Entities.Duenno
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h1>Create</h1>
+
+<h4>Duenno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegistrarDuenno">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idDueno" class="control-label"></label>
+                <input asp-for="idDueno" class="form-control" />
+                <span asp-validation-for="idDueno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreD" class="control-label"></label>
+                <input asp-for="NombreD" class="form-control" />
+                <span asp-validation-for="NombreD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidosD" class="control-label"></label>
+                <input asp-for="ApellidosD" class="form-control" />
+                <span asp-validation-for="ApellidosD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroTelefono" class="control-label"></label>
+                <input asp-for="NumeroTelefono" class="form-control" />
+                <span asp-validation-for="NumeroTelefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Correo" class="control-label"></label>
+                <input asp-for="Correo" class="form-control" />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

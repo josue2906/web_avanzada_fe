@@ -1,0 +1,85 @@
+﻿@model IEnumerable<web_avanzada_fe.Entities.Duenno>
+
+@{
+    ViewData["Title"] = "ListaDueños";
+}
+
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<h1>ListaDueños</h1>
+<table class="table" id="listaDuennos">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idDueno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApellidosD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroTelefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idDueno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidosD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroTelefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                 @Html.ActionLink("Actualizar Dueño", "ActualizarDuenno","Duenno", new {  idDuenno=item.idDueno  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+
+}
+
+
+

@@ -33,20 +33,26 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="RegistrarEmpleado">RegistrarEmpleado</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="ListaDuennos">ListaDuennos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="RegistrarDuenno">RegistrarDuenno</a>
+                        </li>
                         @{if (Context.Session.GetString("Token")==null)
                         {
-                                  <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="InicioSesion">Iniciar Sesión</a>
-                                </li>  
+                                      <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="InicioSesion">Iniciar Sesión</a>
+                                    </li>  
 
                         }}
 
                             @{
                                 if (Context.Session.GetString("Token")!=null)
                         {
-                              <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="CerrarSesion">CerrarSesion</a>
-                            </li>  
+                                  <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="CerrarSesion">CerrarSesion</a>
+                                </li>  
 
                         }
                         }
