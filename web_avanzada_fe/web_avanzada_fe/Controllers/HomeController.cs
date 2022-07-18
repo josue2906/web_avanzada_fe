@@ -15,6 +15,9 @@ namespace web_avanzada_fe.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Cedula= HttpContext.Session.GetString("Cedula");
+            ViewBag.Rol = HttpContext.Session.GetString("Rol");
+            ViewBag.Nombre = HttpContext.Session.GetString("Nombre");
             return View();
         }
 

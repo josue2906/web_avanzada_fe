@@ -1,0 +1,37 @@
+﻿@model web_avanzada_fe.Entities.Empleado
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+@using (Html.BeginForm("InicioSesion", "Login", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <label>Cédula</label>
+                @Html.TextBoxFor(Model => Model.idEmpleado, new { Class = "form-control" })
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <label>Contraseña</label>
+                @Html.PasswordFor(Model => Model.Contrasenna, new { Class = "form-control" })
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <input type="submit" value="Ingresar">
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+}

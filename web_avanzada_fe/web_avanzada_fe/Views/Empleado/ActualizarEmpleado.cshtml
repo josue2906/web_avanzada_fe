@@ -1,0 +1,58 @@
+﻿@model web_avanzada_fe.Entities.Empleado
+
+@{
+    ViewData["Title"] = "ActualizarEmpleado";
+}
+
+<h1>ActualizarEmpleado</h1>
+
+<h4>Empleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ActualizarEmpleado">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idEmpleado" class="control-label"></label>
+                <input asp-for="idEmpleado" class="form-control" />
+                <span asp-validation-for="idEmpleado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contrasenna" class="control-label"></label>
+                <input asp-for="Contrasenna" class="form-control" />
+                <span asp-validation-for="Contrasenna" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreE" class="control-label"></label>
+                <input asp-for="NombreE" class="form-control" />
+                <span asp-validation-for="NombreE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidosE" class="control-label"></label>
+                <input asp-for="ApellidosE" class="form-control" />
+                <span asp-validation-for="ApellidosE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idRol" class="control-label"></label>
+                <input asp-for="idRol" class="form-control" />
+                <span asp-validation-for="idRol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Correo" class="control-label"></label>
+                <input asp-for="Correo" class="form-control" />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Actualizar Empleado" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
