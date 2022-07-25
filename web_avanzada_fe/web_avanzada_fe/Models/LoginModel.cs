@@ -17,6 +17,7 @@ namespace web_avanzada_fe.Models
                 string rutaServicio = rutaBase + "api/Empleado/Autenticar";
                 HttpResponseMessage respuesta = client.PostAsync(rutaServicio, body).GetAwaiter().GetResult();
 
+
                 return (respuesta.IsSuccessStatusCode ? respuesta.Content.ReadFromJsonAsync<Empleado>().Result : null);
             }
         }

@@ -1,10 +1,12 @@
-﻿using System.Net.Http.Headers;
+﻿using JN_Aplicacion.Models;
+using System.Net.Http.Headers;
 using web_avanzada_fe.Entities;
 
 namespace web_avanzada_fe.Models
 {
     public class EmpleadoModel
     {
+    
         public List<Empleado>? ConsultarEmpleados(IConfiguration _config, string token)
         {
             string rutaBase = _config.GetSection("AppSettings:UrlServicio").Value;

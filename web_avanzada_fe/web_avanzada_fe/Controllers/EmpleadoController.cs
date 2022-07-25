@@ -1,15 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using JN_Aplicacion.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using web_avanzada_fe.Entities;
 using web_avanzada_fe.Models;
 
 namespace web_avanzada_fe.Controllers
 {
-    [SesionUsuario]
+  //  [SesionUsuario]
     public class EmpleadoController : Controller
     {
         
         private readonly IConfiguration _config;
         EmpleadoModel model = new EmpleadoModel();
+        RolModel rol = new RolModel();
 
         public EmpleadoController(IConfiguration config)
         {
@@ -24,17 +27,13 @@ namespace web_avanzada_fe.Controllers
             return View(datos);
         }
 
-        //[HttpGet]
-        //public ActionResult Details(string cedula)
-        //{
-        //    string token = HttpContext.Session.GetString("Token");
-        //    var datos = model.ConsultarEmpleado(_config, token, cedula);
-        //    return View(datos);
-        //}
+
 
         [HttpGet]
         public ActionResult RegistrarEmpleado()
         {
+            string token = HttpContext.Session.GetString("Token");
+            ViewBag.listaRoles = new SelectList(rol.ConsultarRoles(_config, token),"idRol", "DescripcionRol");
             return View( new Empleado());
         }
 
@@ -58,6 +57,7 @@ namespace web_avanzada_fe.Controllers
         public ActionResult ActualizarEmpleado(string idEmpleado)
         {
             string token = HttpContext.Session.GetString("Token");
+            ViewBag.listaRoles = new SelectList(rol.ConsultarRoles(_config, token), "idRol", "DescripcionRol");
             var datos = model.ConsultarEmpleado(_config, token, idEmpleado);
             return View(datos);
         }
@@ -70,7 +70,7 @@ namespace web_avanzada_fe.Controllers
             try
             {
                 string token = HttpContext.Session.GetString("Token");
-                model.ActualizarEmpleado(_config, token, empleado);
+               model.ActualizarEmpleado(_config, token, empleado);
                 return RedirectToAction("ListaEmpleados", "Empleado");
             }
             catch
@@ -78,6 +78,7 @@ namespace web_avanzada_fe.Controllers
                 return View();
             }
         }
+
 
         // POST: PersonaController/Delete/5
         [HttpGet]

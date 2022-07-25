@@ -33,8 +33,8 @@
                 <span asp-validation-for="ApellidosE" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="idRol" class="control-label"></label>
-                <input asp-for="idRol" class="form-control" />
+                <label asp-for="idRol" class="control-label">ROL</label>
+                @Html.DropDownListFor(model =>model.idRol, ViewBag.listaRoles as SelectList,"Seleccione un rol", new {@class="form-control"})
                 <span asp-validation-for="idRol" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -49,9 +49,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

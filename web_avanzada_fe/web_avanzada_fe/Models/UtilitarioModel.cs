@@ -35,5 +35,8 @@ namespace JN_Aplicacion.Models
             return Convert.ToBase64String(array);
         }
 
+
+
+
     }
 }

@@ -10,8 +10,7 @@
         <div class="text-center">
             <h3>Registrar Cita</h3>
         </div>
-
-        
+               @Html.HiddenFor(model=>model.idCita)
              <div class="form-group">
                 <label class="control-label">Mascota</label><span style="color:red">* </span>
                 <input asp-for="idMascota" class="form-control" />

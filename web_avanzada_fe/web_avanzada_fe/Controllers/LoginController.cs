@@ -54,7 +54,7 @@ namespace web_avanzada_fe.Controllers
             }
             catch (Exception)
             {
-                return View("Error");
+                return View("Error", new ErrorViewModel());
             }
         }
 
