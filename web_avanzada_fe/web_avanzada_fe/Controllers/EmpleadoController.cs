@@ -1,5 +1,4 @@
-﻿using JN_Aplicacion.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using web_avanzada_fe.Entities;
 using web_avanzada_fe.Models;
 
@@ -71,7 +70,7 @@ namespace web_avanzada_fe.Controllers
             try
             {
                 string token = HttpContext.Session.GetString("Token");
-               model.ActualizarEmpleado(_config, token, empleado);
+                model.ActualizarEmpleado(_config, token, empleado);
                 return RedirectToAction("ListaEmpleados", "Empleado");
             }
             catch
@@ -79,7 +78,6 @@ namespace web_avanzada_fe.Controllers
                 return View();
             }
         }
-
 
         // POST: PersonaController/Delete/5
         [HttpGet]

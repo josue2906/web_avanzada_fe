@@ -1,0 +1,52 @@
+﻿@model web_avanzada_fe.Entities.Cita
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+@using (Html.BeginForm("ActualizarCita", "Cita", FormMethod.Post))
+{
+    <div class="container mt-5">
+        <div class="text-center">
+            <h3>Registrar Cita</h3>
+        </div>
+
+        
+             <div class="form-group">
+                <label class="control-label">Mascota</label><span style="color:red">* </span>
+                <input asp-for="idMascota" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Mascota</label><span style="color:red">* </span>
+                <input asp-for="NombreM" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Servicio</label><span style="color:red">* </span>
+                <select asp-for="idServicio" class="form-control" asp-items="@ViewBag.Servicios"></select>                
+            </div>
+             <div class="form-group">
+                <label class="control-label">Estado</label><span style="color:red">* </span>
+                 @Html.DropDownListFor(Model => Model.Estado, new List<SelectListItem> {
+                 new SelectListItem { Text = "Seleccione un estado", Value = "-1"},
+                   new SelectListItem { Text = "Pendiente", Value = "true"},
+                   new SelectListItem { Text = "Cancelada", Value = "false"},
+                }, new { @Class = "form-control", required = "required" })          
+            </div>
+        
+        
+            <div class="form-group">
+                <label class="control-label">Fecha</label><span style="color:red">* </span>
+                  <input type="date" asp-for="FechaCita" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Empleado</label><span style="color:red">* </span>
+                <select asp-for="idEmpleado" class="form-control" asp-items="@ViewBag.Empleados"></select>                
+            </div>
+
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <input type="submit" value="Actualizar Cita..." class="btn btn-success">
+            </div>
+        </div>
+    </div>
+}

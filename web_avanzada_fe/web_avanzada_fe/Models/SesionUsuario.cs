@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 
-namespace JN_Aplicacion.Models
+namespace web_avanzada_fe.Models
 {
     public class SesionUsuario : ActionFilterAttribute
     {
@@ -22,6 +22,5 @@ namespace JN_Aplicacion.Models
 
             base.OnActionExecuting(context);
         }
-
     }
 }
