@@ -1,0 +1,75 @@
+﻿@model IEnumerable<web_avanzada_fe.Entities.Cita>
+
+@{
+    ViewData["Title"] = "Listado de Citas";
+}
+
+<h1>Listado de Citas</h1>
+<table class="table" id="listaCitas">
+    <thead>
+        <tr>
+            <th>
+                Mascota
+            </th>
+            <th>
+               Servicio
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Total
+            </th>
+             <th>
+                Empleado
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionServicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCita)
+            </td>
+                @if (item.Estado == true)
+                {
+                    <td>
+                       Pendiente
+                    </td>
+                } else
+                {
+                    <td>
+                       Cancelada
+                    </td>   
+                }
+            <td>
+               ₡@Html.DisplayFor(modelItem => item.PrecioCita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleado)
+            </td>
+            <td>
+                @Html.ActionLink("Actualizar", "ActualizarCita","Cita", new {  idCita=item.idCita  }) |
+                @Html.ActionLink("Cancelar", "CancelarCita","Cita", new {   idCita=item.idCita  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section scripts
+{
+     <script src="~/js/Funciones.js" asp-append-version="true"></script>
+}
+

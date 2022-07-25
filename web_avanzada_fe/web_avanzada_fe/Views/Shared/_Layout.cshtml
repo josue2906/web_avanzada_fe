@@ -7,6 +7,7 @@
     <title>@ViewData["Title"] - web_avanzada_fe</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/js/Datatables/Datatables.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/web_avanzada_fe.styles.css" asp-append-version="true" />
 
 </head>
@@ -39,12 +40,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="RegistrarDuenno">RegistrarDuenno</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="ListaCitas">Citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="RegistrarCita"> Registrar Cita</a>
+                        </li>
                         @{if (Context.Session.GetString("Token")==null)
                         {
                                       <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="InicioSesion">Iniciar Sesión</a>
                                     </li>  
-
                         }}
 
                             @{
@@ -75,6 +81,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/Datatables/Datatables.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

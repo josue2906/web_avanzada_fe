@@ -1,7 +1,6 @@
-﻿using JN_Aplicacion.Models;
+﻿using web_avanzada_fe.Models;
 using Microsoft.AspNetCore.Mvc;
 using web_avanzada_fe.Entities;
-using web_avanzada_fe.Models;
 
 namespace web_avanzada_fe.Controllers
 {
