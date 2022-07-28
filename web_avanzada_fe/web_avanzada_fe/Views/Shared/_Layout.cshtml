@@ -46,6 +46,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="RegistrarCita"> Registrar Cita</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Mascota" asp-action="ListaMascotas">Lista Mascotas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Mascota" asp-action="RegistrarMascota">Registrar Mascota</a>
+                        </li>
                         @{if (Context.Session.GetString("Token")==null)
                         {
                                       <li class="nav-item">

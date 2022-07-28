@@ -1,0 +1,81 @@
+﻿@model IEnumerable<web_avanzada_fe.Entities.Mascota>
+
+@{
+    ViewData["Title"] = "ListaEmpleados";    
+}
+
+<h1>Lista Mascotas</h1>
+<table class="table" id="listaEmpleados">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMascota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Peso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idDueno)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMascota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idDueno)
+            </td>
+            <td>
+                 @Html.ActionLink("Actualizar Mascota", "ActualizarMascota","Mascota", new {  idMascota=item.IdMascota  }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
