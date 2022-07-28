@@ -5,33 +5,72 @@
     ViewData["Title"] = "Iniciar Sesión";
 }
 
-@using (Html.BeginForm("InicioSesion", "Login", FormMethod.Post))
+
+
+@section Styles
 {
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <label>Cédula</label>
-                @Html.TextBoxFor(Model => Model.idEmpleado, new { Class = "form-control" })
-            </div>
-            <div class="col-3"></div>
-        </div>
+    <link href="~/css/Login.css" rel="stylesheet" type="text/css" />
+}
 
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <label>Contraseña</label>
-                @Html.PasswordFor(Model => Model.Contrasenna, new { Class = "form-control" })
-            </div>
-            <div class="col-3"></div>
-        </div>
+<div class="login">
+    <h1>Iniciar Sesión</h1>
+        @using (Html.BeginForm("LoginEmpleado", "Auth", FormMethod.Post, new { id="loginForm"}))
+    {
+        @Html.TextBoxFor(Model => Model.idEmpleado, new
+   {
+       id = "cedula",
+       name="cedula",
+       placeholder = "Cédula",
+       required="required",
+       onChange="VerificarEspaciosLogin()",
+       @onkeypress = "return validarNumeros(event);",
+       autocomplete = "off",
+       maxlength = 9
+   })
+        @Html.Label("", (string)ViewBag.Error, new { @class = "badge badge-danger" })
 
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <input type="submit" value="Ingresar">
-            </div>
-            <div class="col-3"></div>
-        </div>
-    </div>
+        @Html.PasswordFor(Model => Model.Contrasenna, new { type = "password", id = "pass",name="pass", placeholder = "Contraseña",onChange="VerificarEspaciosLogin()"})
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión </button>
+
+    }
+</div>
+
+  @section Scripts
+{
+     <script src="~/lib/jquery/dist/jquery.min.js"></script>  
+ <script src="/lib//jquery-validation/dist/jquery.validate.js"></script>  
+  <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>  
+     <script> 
+         $(document).ready(function () {
+    $("#loginForm").validate(
+  //      {
+  //      rules: {
+  //          <%=cedula.UniqueID %>: {
+  //              required: true,
+  //              minlength: 3
+  //          },
+  //          <%=pass.UniqueID %>: {
+  //              required: true,
+  //          },
+  //      }
+  //  ,
+  //      messages: {
+  //<%=cedula.UniqueID %>: {
+  //              required: "aaaaaaaaaa",
+  //              minlength: "Name should be at least 3 characters"
+            
+  //      },
+  //      <%=pass.UniqueID %>: {
+  //          required: "Please enter your age"
+  //      }
+
+  //  }
+  //  }
+    );
+
+}
+);
+     </script>
+     <script src="~/js/login.js" asp-append-version="true"></script>
 }
