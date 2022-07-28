@@ -14,7 +14,7 @@
 
 <div class="login">
     <h1>Iniciar Sesión</h1>
-        @using (Html.BeginForm("LoginEmpleado", "Auth", FormMethod.Post, new { id="loginForm"}))
+        @using (Html.BeginForm("InicioSesion", "Login", FormMethod.Post, new { id="loginForm"}))
     {
         @Html.TextBoxFor(Model => Model.idEmpleado, new
    {

@@ -14,7 +14,6 @@ function validarNumeros(evt) {
 }
 
     function VerificarEspaciosLogin() {
-        alert("Funciona")
         $("#cedula").val($("cedula").val().trim());
 }
 
