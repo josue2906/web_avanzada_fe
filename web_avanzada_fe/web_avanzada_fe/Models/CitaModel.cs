@@ -137,19 +137,19 @@ namespace web_avanzada_fe.Models
             }
             return list;
         }
-        
-        //public List<SelectListItem> SeleccionMascotas(IConfiguration _config, string token)
-        //{
-        //    MascotasModel model = new MascotasModel();
-        //    List<SelectListItem> list = new List<SelectListItem>();
 
-        //    var datos = model.ConsultarMascotas(_config, token);
-        //    foreach (var item in datos)
-        //    {
-        //        list.Add(new SelectListItem { Value = item.idMascota.ToString(), Text = item.NombreM });
-        //    }
-        //    return list;
-        //}
+        public List<SelectListItem> SeleccionMascotas(IConfiguration _config, string token)
+        {
+            MascotaModel model = new MascotaModel();
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            var datos = model.ConsultarMascotas(_config, token);
+            foreach (var item in datos)
+            {
+                list.Add(new SelectListItem { Value = item.IdMascota.ToString(), Text = item.NombreM });
+            }
+            return list;
+        }
         public List<SelectListItem> SeleccionEmpleados(IConfiguration _config, string token)
         {
             EmpleadoModel model = new EmpleadoModel();

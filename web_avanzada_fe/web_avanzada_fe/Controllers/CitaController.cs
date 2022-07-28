@@ -28,7 +28,7 @@ namespace web_avanzada_fe.Controllers
         public ActionResult RegistrarCita()
         {
             string token = HttpContext.Session.GetString("Token");
-            //ViewBag.Mascotas = model.SeleccionMascotas(_config, token);
+            ViewBag.Mascotas = model.SeleccionMascotas(_config, token);
             ViewBag.Empleados = model.SeleccionEmpleados(_config, token);
             ViewBag.Servicios = model.SeleccionServicios(_config, token);
             return View(new Cita());
@@ -52,7 +52,7 @@ namespace web_avanzada_fe.Controllers
         public ActionResult ActualizarCita(int idCita)
         {
             string token = HttpContext.Session.GetString("Token");
-            //ViewBag.Mascotas = model.SeleccionMascotas(_config, token);
+            ViewBag.Mascotas = model.SeleccionMascotas(_config, token);
             ViewBag.Empleados = model.SeleccionEmpleados(_config, token);
             ViewBag.Servicios = model.SeleccionServicios(_config, token);
             var datos = model.ConsultarUnaCita(_config, token, idCita);

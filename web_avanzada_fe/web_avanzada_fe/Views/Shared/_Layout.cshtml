@@ -26,29 +26,26 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="ListaEmpleados">Empleados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="ListaEmpleados">ListaEmpleados</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="RegistrarEmpleado">Registrar Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="RegistrarEmpleado">RegistrarEmpleado</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="ListaDuennos">Dueños</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="ListaDuennos">ListaDuennos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="RegistrarDuenno">RegistrarDuenno</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="RegistrarDuenno">Registrar Dueño</a>
                         </li>
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="ListaCitas">Citas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="RegistrarCita"> Registrar Cita</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="RegistrarCita">Registrar Cita</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Mascota" asp-action="ListaMascotas">Lista Mascotas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Mascota" asp-action="ListaMascotas">Mascotas</a>
                         </li>
 
                         <li class="nav-item">
@@ -65,7 +62,7 @@
                                 if (Context.Session.GetString("Token")!=null)
                         {
                                   <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="CerrarSesion">CerrarSesion</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="CerrarSesion">Cerrar Sesión</a>
                                 </li>  
 
                         }

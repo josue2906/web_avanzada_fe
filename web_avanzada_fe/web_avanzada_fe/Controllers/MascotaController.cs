@@ -5,6 +5,7 @@ using web_avanzada_fe.Models;
 
 namespace web_avanzada_fe.Controllers
 {
+    [SesionUsuario]
     public class MascotaController : Controller
     {
         private readonly IConfiguration _config;

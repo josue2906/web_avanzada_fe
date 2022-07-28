@@ -1,23 +1,19 @@
 ﻿@model web_avanzada_fe.Entities.Cita
 
 @{
-    ViewData["Title"] = "Update";
+    ViewData["Title"] = "Actualizar Cita";
 }
 
 @using (Html.BeginForm("ActualizarCita", "Cita", FormMethod.Post))
 {
     <div class="container mt-5">
         <div class="text-center">
-            <h3>Registrar Cita</h3>
+            <h3>Actualizar Cita</h3>
         </div>
                @Html.HiddenFor(model=>model.idCita)
              <div class="form-group">
                 <label class="control-label">Mascota</label><span style="color:red">* </span>
-                <input asp-for="idMascota" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label class="control-label">Mascota</label><span style="color:red">* </span>
-                <input asp-for="NombreM" class="form-control" />
+                  <select asp-for="idMascota" class="form-control" asp-items="@ViewBag.Mascotas"></select>                
             </div>
             <div class="form-group">
                 <label class="control-label">Servicio</label><span style="color:red">* </span>
