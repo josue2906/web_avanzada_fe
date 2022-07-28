@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Net.Http.Headers;
 using web_avanzada_fe.Entities;
 
 namespace web_avanzada_fe.Models
@@ -82,6 +83,18 @@ namespace web_avanzada_fe.Models
 
                 return new Mascota();
             }
+        }
+        public List<SelectListItem> SeleccionDueños(IConfiguration _config, string token)
+        {
+            DuennoModel model = new DuennoModel();
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            var datos = model.ConsultarDuennos(_config, token);
+            foreach (var item in datos)
+            {
+                list.Add(new SelectListItem { Value = item.idDueno.ToString(), Text = item.NombreD + " " + item.ApellidosD });
+            }
+            return list;
         }
     }
 }

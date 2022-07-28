@@ -27,11 +27,11 @@ namespace web_avanzada_fe.Controllers
         }
 
 
-
         [HttpGet]
         public ActionResult RegistrarMascota()
         {
             string token = HttpContext.Session.GetString("Token");
+            ViewBag.Duennos = model.SeleccionDueños(_config, token);
             return View(new Mascota());
         }
 
@@ -55,6 +55,7 @@ namespace web_avanzada_fe.Controllers
         public ActionResult ActualizarMascota(int idMascota)
         {
             string token = HttpContext.Session.GetString("Token");
+            ViewBag.Duennos = model.SeleccionDueños(_config, token);
             var datos = model.ConsultarMascota(_config, token, idMascota);
             return View(datos);
         }

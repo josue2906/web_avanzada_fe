@@ -27,3 +27,13 @@ $(document).ready(function () {
         "lengthChange": true
     });
 });
+
+$(document).ready(function () {
+    $('#listaMascotas').DataTable({
+        "info": true,
+        "filter": true,
+        "ordering": true,
+        "paging": true,
+        "lengthChange": true
+    });
+});
