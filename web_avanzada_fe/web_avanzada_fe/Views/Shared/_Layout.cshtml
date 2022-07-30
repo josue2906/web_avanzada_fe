@@ -45,11 +45,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Mascota" asp-action="ListaMascotas">Mascotas</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Mascota" asp-action="RegistrarMascota">Registrar Mascota</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Mascota" asp-action="RegistrarMascota">Mascotas</a>
                         </li>
                         @{if (Context.Session.GetString("Token")==null)
                         {

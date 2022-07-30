@@ -47,7 +47,8 @@ namespace web_avanzada_fe.Models
         public Mascota? RegistrarMascota(IConfiguration _config, string token, Mascota mascota)
         {
             string rutaBase = _config.GetSection("AppSettings:UrlServicio").Value;
-
+            string nuevaFecha = (DateTime.Parse(mascota.FechaNacimiento)).ToString("yyyy-MM-dd'T'HH:mm:ssZ");
+            mascota.FechaNacimiento = nuevaFecha;
             using (var client = new HttpClient())
             {
                 JsonContent body = JsonContent.Create(mascota);

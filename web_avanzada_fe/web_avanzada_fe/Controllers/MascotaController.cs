@@ -32,6 +32,7 @@ namespace web_avanzada_fe.Controllers
         {
             string token = HttpContext.Session.GetString("Token");
             ViewBag.Duennos = model.SeleccionDueños(_config, token);
+            ViewBag.Mascotas = model.ConsultarMascotas(_config, token);
             return View(new Mascota());
         }
 
@@ -43,7 +44,7 @@ namespace web_avanzada_fe.Controllers
             {
                 string token = HttpContext.Session.GetString("Token");
                 var datos = model.RegistrarMascota(_config, token, mascota);
-                return RedirectToAction("ListaMascotas", "Mascota");
+                return RedirectToAction("RegistrarMascota", "Mascota");
             }
             catch
             {
@@ -75,5 +76,7 @@ namespace web_avanzada_fe.Controllers
                 return View();
             }
         }
+
+
     }
 }
