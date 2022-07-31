@@ -4,52 +4,70 @@
     ViewData["Title"] = "Registrar Empleado";
 }
 
+@using (Html.BeginForm("RegistrarEmpleado", "Empleado", FormMethod.Post, new { @Class = "row g-3" }))
+{
+<div class="container mt-5">
+        <div class="text-center">
+            <h3>Registrar Empleado</h3>
+        </div>
 
-<h1>Registrar Empleado</h1>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label class="form-label">Cédula</label> <span style="color:red"> * </span>
+                @Html.TextBoxFor(Model => Model.idEmpleado, new
+           {
+               @Class = "form-control",
+               required = "required",
+               onblur = "informacion_personal(this.value)",
+               onChange = "VerificarEspacios()",
+               autocomplete = "off",
+               @onkeypress = " return validarNumeros(event);",
+               maxlength = 9
+           })
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="RegistrarEmpleado">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="idEmpleado" class="control-label"></label>
-                <input asp-for="idEmpleado" class="form-control" />
-                <span asp-validation-for="idEmpleado" class="text-danger"></span>
+                @Html.Label("", (string)ViewBag.mensaje, new { @Class = "badge badge-danger" })
+                @Html.Hidden("mensaje", (string)ViewBag.mensaje, new { @Class = "badge badge-danger" })
+
+
             </div>
-            <div class="form-group">
-                <label asp-for="Contrasenna" class="control-label"></label>
-                <input asp-for="Contrasenna" class="form-control" />
-                <span asp-validation-for="Contrasenna" class="text-danger"></span>
+            <div class="col-md-6">
+                <label class="form-label">Tipo de Usuario</label><span style="color:red">* </span>
+                  @Html.DropDownListFor(model =>model.idRol, ViewBag.listaRoles as SelectList,"Seleccione un rol", new {@class="form-control"})
             </div>
-            <div class="form-group">
-                <label asp-for="NombreE" class="control-label"></label>
-                <input asp-for="NombreE" class="form-control" />
-                <span asp-validation-for="NombreE" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">Nombres</label><span style="color:red">* </span>
+                @Html.TextBoxFor(Model => Model.NombreE, new { @Class = "form-control", @style = "width:100%;", id = "nombres", onblur = "VerificarEspaciosNombre()", required = "required" })
             </div>
-            <div class="form-group">
-                <label asp-for="ApellidosE" class="control-label"></label>
-                <input asp-for="ApellidosE" class="form-control" />
-                <span asp-validation-for="ApellidosE" class="text-danger"></span>
+            <div class="col-md-6">
+                <label class="form-label">Apellidos</label><span style="color:red">* </span>
+                @Html.TextBoxFor(Model => Model.ApellidosE, new { @Class = "form-control", id = "apellidos", onblur = "VerificarEspaciosApellido()", required = "required" })
             </div>
-            <div class="form-group">
-                <label asp-for="idRol" class="control-label">ROL</label>
-                @Html.DropDownListFor(model =>model.idRol, ViewBag.listaRoles as SelectList,"Seleccione un rol", new {@class="form-control"})
-                <span asp-validation-for="idRol" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <label class="form-label">Contraseña</label><span style="color:red">* </span>
+                <span>
+                    @Html.PasswordFor(Model => Model.Contrasenna, new { @Class = "form-control", onblur = "VerificarEspaciosContra()", required = "required" })
+                </span>
             </div>
-            <div class="form-group">
-                <label asp-for="Correo" class="control-label"></label>
-                <input asp-for="Correo" class="form-control" />
-                <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <label class="form-label">Correo</label><span style="color:red">* </span>
+                @Html.TextBoxFor(Model => Model.Correo, new { @Class = "form-control", required = "required", oninput = "ValidateEmail(this.value)", onblur = "ValidateEmail_onBlur(this.value)" })
+                <label class="bagde badge-danger" id="correo_label"></label>
             </div>
-         
-            <div class="form-group">
-                <input type="submit" value="Registrar..." class="btn btn-success" />
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <input type="submit" value="Registrar Empleado..." class="btn btn-success">
             </div>
-        </form>
+
+        </div>
     </div>
-</div>
-
+    }
 
 @*Funciona igual pero con un modal por si se quiere usar*@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
