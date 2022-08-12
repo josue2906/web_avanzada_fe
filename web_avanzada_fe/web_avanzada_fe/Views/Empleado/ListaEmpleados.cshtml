@@ -12,19 +12,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.idEmpleado)
+                Cédula
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NombreE)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ApellidosE)
+                Apellidos
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.idRol)
+                Rol
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Correo)
+                Correo Eléctronico
             </th>
             <th></th>
         </tr>
@@ -41,9 +41,25 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ApellidosE)
             </td>
+                @if (item.idRol == 1)
+                {
+                    <td>
+                Administrador
+                    </td>
+
+                }
+                else if (item.idRol == 2)
+                {
+                   <td>
+                Veterinario
+                   </td> 
+                }else{
             <td>
-                @Html.DisplayFor(modelItem => item.idRol)
+                Asistente
             </td>
+
+                }
+               
             <td>
                 @Html.DisplayFor(modelItem => item.Correo)
             </td>

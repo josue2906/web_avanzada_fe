@@ -7,6 +7,7 @@ using web_avanzada_fe.Models;
 namespace web_avanzada_fe.Controllers
 {
   [SesionUsuario]
+  [ValidarAdmin]
     public class EmpleadoController : Controller
     {
         

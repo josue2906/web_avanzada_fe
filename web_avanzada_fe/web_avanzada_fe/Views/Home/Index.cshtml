@@ -2,10 +2,160 @@
     ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">¡Bienvenido a nuestra veterinaria!</h1>
-   <br />
-    <h1>Cédula: @ViewBag.Cedula</h1>
-    <h1>Nombre: @ViewBag.Nombre</h1>
-    <h1>Rol: @ViewBag.Rol</h1>
+<div id="parallax-world-of-ugg">
+    <section>
+        <div class="title">
+            <h3>Bienvenido</h3>
+            @{
+            if (Context.Session.GetString("Token") != null)
+            {
+                    <h3>@Context.Session.GetString("Nombre")</h3>
+
+
+                if (Context.Session.GetString("Rol") == "1")
+                {
+                        <h3>
+                            Rol: Administrador
+                        </h3>
+                }
+                else if (Context.Session.GetString("Rol") == "2")
+                {
+                        <h3>Rol: Secretrario(a) </h3>
+                }
+                else if (Context.Session.GetString("Rol") == "3")
+                {
+                        <h3>Rol: Doctor(a) </h3>
+                }
+                else if (Context.Session.GetString("Rol") == "4")
+                {
+                        <h3>Rol: Enfermero(a) </h3>
+                }
+            }
+            }
+        </div>
+    </section>
+
+    <section>
+        <div class="parallax-one">
+            <h2 style="color: black">SOBRE NOSOTROS</h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="block">
+            <p>
+                <span class="first-character sc">F</span>undado en 1978, el Hospital General JoEmVaNa es un centro de medicina integral designado por el Ministerio de Salud de Costa Rica y miembro fundador de la Red Nacional Integral del Cáncer, lo que lo convierte en un líder nacional en el avance de los protocolos de investigación y tratamiento.
+
+                Además, ofrecemos un servicio de salud integral a los sectores más vulnerables de la población como parte de nuestra misión: dar vida a quienes más lo necesitan.
+            </p>
+
+            <p class="line-break"></p>
+            <p class="margin-top-10">
+                Aquí estamos dedicados a la vida. Hacemos un especial esfuerzo diario para cumplir con los estándares nacionales e internacionales y garantizar servicios médicos de calidad y nuestro compromiso con el medio ambiente.
+
+                Esperamos trabajar con usted y su familia para ayudarlo a mantener una buena salud. También puede contar con que estaremos allí en caso de que usted o un ser querido se enferme, se lesione o tenga inquietudes sobre un problema de salud.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="parallax-two">
+            <h2 style="color: black">SERVICIOS QUE OFRECEMOS</h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="block">
+            <p><span class="first-character ny">S</span>omos un hospital privado en Costa Rica que ofrece servicios médicos especializados en lo que el paciente necesite. Cada colaborador es capaz de brindarle la ayuda solicitada en cualquier momento.  Nuestro hospital cuenta con un personal altamente calificado según su área y especialidad para brindarles a nuestros pacientes y familiares la mejor calidad y el mejor servicio posible a precios asequibles para cuidar no solo de su salud sino también su bolsillo.</p>
+            <p class="line-break"></p>
+            <p class="margin-top-10">Nuestros servicios son: </p>
+
+            <ul style="font-size:20px; font-family: 'Source Sans Pro', sans-serif;" type="circle">
+                <li>Maternidad</li>
+                <li>Laboratorio Clínico</li>
+                <li>Consultas Generales</li>
+                <li>Pediatría</li>
+                <li>Obstetricia</li>
+                <li>Centro de vacunación</li>
+                <li>Fisioterapia</li>
+                <li>Cardiología</li>
+                <li>Urgencias</li>
+                <li>Farmacia 24/7</li>
+                <li>Chequeos médicos preventivos</li>
+            </ul>
+            <p class="line-break"></p>
+            <p class="margin-top-10">Nuestros especialidades médicas y afines son: </p>
+
+            <ul style="font-size:20px; font-family: 'Source Sans Pro', sans-serif;" type="circle">
+                <li>Cirugía General</li>
+                <li>Cirugía Pediátrica</li>
+                <li>Cirugía Plástica</li>
+                <li>Dermatología</li>
+                <li>Endocrinología</li>
+                <li>Gastroenterología</li>
+                <li>Geriatría</li>
+                <li>Hematología</li>
+                <li>Nefrología</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="parallax-three">
+            <h2 style="color: black">NUESTRAS COMODIDADES</h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="block">
+            <p>
+                <span class="first-character atw">E</span>n nuestro hospital tenemos la mejores comodidades.
+                El hospital tiene una superficie de 165.000 m². Consta de cuatro plantas en superficie y una bajo superficie. Su diseño constructivo es modular y tiene una disposición horizontal, moderna y funcional, rodeada de zonas verdes y viales para los usuarios. Los diferentes módulos se comunican con un pasillo central, donde están ubicadas las unidades administrativas de los servicios.
+                El edificio cuenta con las áreas diferenciadas de: Hospitalización, Consultas, Servicios Generales,
+                Bloque quirúrgico y Urgencias, Investigación, Docencia y Administración.
+            </p>
+            <p>
+                Cuenta también con un salón de actos con capacidad de 300 personas, biblioteca, guardería, aparcamiento subterráneo de 3.000 plazas y otro de superficie de 450 plazas, además de un helipuerto. Las salas de hospitalización tienen, todas ellas, 25 habitaciones individuales y con baño, aunque están dotadas de los elementos necesarios para la hospitalización de dos pacientes
+                por si fuera necesaria su utilización en algún momento.
+            </p>
+
+        </div>
+    </section>
+
+
+    <section>
+        <div class="parallax-four">
+            <h2 style="color: black">CONTÁCTENOS</h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="block">
+            <p>
+                <span class="first-character sc">C</span>ontamos con un Departamento de Servicio al Cliente
+                para asesorarlo y
+                brindarle toda la información que usted requiera sobre los servicios médicos y
+                administrativos que brindamos.
+                Tenemos puestos de información en cada una de las entradas principales,
+                donde encontrará un representante de Servicio al Cliente que está a su
+                disposición para darle toda la información que necesite.
+                Nuestros funcionarios están capacitados para atender su llamada en español o inglés.
+            </p>
+
+            <p>
+                A través de nuestro Call Center brindamos atención personalizada sobre los servicios que ofrecemos.
+                Contáctenos por medio del correo electrónico
+                <u style="color: blue">servicioalcliente@hospitaljoemvana.com</u>
+                el fax: <u style="color: blue">2156-1984</u>,
+                Whatsapp: <u style="color: blue">8830-6765</u> o la Central Telefónica: <u style="color: blue">2156-9000</u>.
+
+            </p>
+        </div>
+    </section>
+
 </div>
+
+@section Styles
+{
+    <link href="~/css/Index.css" rel="stylesheet" />
+}

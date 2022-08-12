@@ -1,4 +1,5 @@
-﻿<a href="@Url.Action("Index", "Home")" target="_blank">
+﻿
+<a href="@Url.Action("Index", "Home")" target="_blank">
     <header class="top-header">
     </header>
 
@@ -15,7 +16,8 @@
         <div class="error__content">
             <div class="error__message message">
                 <h1 class="message__title">Página No Encontrada</h1>
-                <p class="message__text">Lo lamentamos, la página que buscaba no se encuentra disponible. Debe iniciar sesión para acceder a la página deseada.</p>
+                <p class="message__text">Lo lamentamos, la página que buscaba no se encuentra disponible. No tiene permisos suficientes para acceder a esta página de nuestro hospital. 
+                Intente de nuevo iniciando sesión.</p>
             </div>
             <div class="error__nav e-nav">
                 <a href="@Url.Action("InicioSesion", "Login")" target="_blanck" class="e-nav__link"></a>
@@ -29,5 +31,7 @@
 
 @section Styles
 {
+
     <link href="~/css/Error.css" rel="stylesheet" />
 }
+

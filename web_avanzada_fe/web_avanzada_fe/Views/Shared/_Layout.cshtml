@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/js/Datatables/Datatables.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/web_avanzada_fe.styles.css" asp-append-version="true" />
-
+     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
     <header>
@@ -68,6 +68,130 @@
             </div>
         </nav>
     </header>
+
+    @*
+    //<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    //    @Html.ActionLink("Veterinaria", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    //    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    //        <span class="navbar-toggler-icon"></span>
+    //    </button>
+    //    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    //        <ul class="navbar-nav mr-auto">
+
+
+    //            @if (Context.Session.GetString("Token") != null)
+    //            {
+
+    //                <li class="nav-item dropdown">
+    //                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    //                        Citas
+    //                    </a>
+    //                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    //                        @if (Context.Session.GetString("Rol") != null)
+    //                        {
+    //                            <a href="@Url.Action("SeleccionarUnaCita", "Cita")" class="dropdown-item">
+    //                                <span>Seleccionar Una Cita</span>
+    //                            </a>
+    //                            <a href="@Url.Action("SeleccionarCitas", "Cita")" class="dropdown-item">
+    //                                <span>Seleccionar Citas</span>
+    //                            </a>
+    //                        }
+
+    //                        @if (Context.Session.GetString("Rol").ToString() == "1" || (Context.Session.GetString("Rol").ToString() == "2"))
+    //                        {
+    //                            <a href="@Url.Action("RegistrarCita", "Cita")" class="dropdown-item">
+    //                                <span>Registrar Cita</span>
+    //                            </a>
+    //                        }
+    //                    </div>
+    //                </li>
+
+
+
+    //                if (Context.Session.GetString("Rol").ToString() == "1")
+    //                {
+    //                    <li class="nav-item dropdown">
+    //                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    //                            Empleados
+    //                        </a>
+    //                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    //                            <a href="@Url.Action("ListaEmpleados", "Empleado")" class="dropdown-item">
+    //                                <span>Seleccionar Empleados</span>
+    //                            </a>
+    //                            <a href="@Url.Action("RegistrarEmpleado", "Empleado")" class="dropdown-item">
+    //                                <span>Registrar Empleados</span>
+    //                            </a>
+    //                        </div>
+    //                    </li>
+    //                }
+    //                <li class="nav-item dropdown">
+    //                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    //                        Mascotas
+    //                    </a>
+
+    //                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    //                        @if (Context.Session.GetString("Rol") != null)
+    //                        {
+    //                            <a href="@Url.Action("RegistrarMascota", "Mascota")" class="dropdown-item">
+    //                                <span>Seleccionar Pacientes</span>
+    //                            </a>
+    //                        }
+                            
+    //                        @if (Context.Session.GetString("Rol").ToString() == "1" ||Context.Session.GetString("Rol").ToString() == "3")
+    //                        {
+    //                            <a href="@Url.Action("RegistrarPaciente", "Paciente")" class="dropdown-item">
+    //                                <span>Registrar Pacientes</span>
+    //                            </a>
+    //                        }
+    //                    </div>
+    //                </li>
+
+
+    //                if (Context.Session.GetString("Rol").ToString() == "1")
+    //                {
+    //                    <li class="nav-item active">
+    //                        <a class="nav-link" href="@Url.Action("SeleccionarBitacora", "Empleado")">
+    //                            <span>
+    //                                Bitácora
+    //                            </span>
+    //                        </a>
+    //                    </li>
+    //                    }
+    //                }
+    //            </ul>
+    //    </div>
+    //    @if (Context.Session.GetString("Token") == null)
+    //    {
+    //        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    //            <ul class="navbar-nav ml-auto">
+    //                <li class="nav-item active">
+    //                    <a class="nav-link" href="@Url.Action("InicioSesion", "Login")">
+    //                        <span>
+    //                            Inicio Sesión
+    //                        </span>
+    //                    </a>
+    //                </li>
+    //            </ul>
+    //        </div>
+
+    //    }
+    //    else
+    //    {
+    //        <div class="navbar-collapse collapse w-80 dual-collapse2">
+    //            <ul class="navbar-nav ml-auto">
+    //                <li class="nav-item active">
+    //                    <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">
+    //                        <span>
+    //                            Cerrar Sesión
+    //                        </span>
+    //                    </a>
+    //                </li>
+    //            </ul>
+    //        </div>
+    //    }
+    //</nav>
+    *@ 
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

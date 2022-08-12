@@ -14,8 +14,29 @@ namespace web_avanzada_fe.Models
                 context.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
                     {
-                        {"controller", "Login"},
-                        {"action", "InicioSesion"}
+                        {"controller", "Home"},
+                        {"action", "Error"}
+                    }
+                );
+            }
+
+            base.OnActionExecuting(context);
+        }
+
+
+
+    }
+    public class ValidarAdmin : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (context.HttpContext.Session.GetString("Token") == null || context.HttpContext.Session.GetString("Rol").ToString()!="1")
+            {
+                context.Result = new RedirectToRouteResult(
+                    new RouteValueDictionary
+                    {
+                        {"controller", "Home"},
+                        {"action", "ErrorRol"}
                     }
                 );
             }
@@ -23,4 +44,47 @@ namespace web_avanzada_fe.Models
             base.OnActionExecuting(context);
         }
     }
+
+
+    public class ValidarVeterinario : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (context.HttpContext.Session.GetString("Token") == null || context.HttpContext.Session.GetString("Rol").ToString() != "1" && 
+                context.HttpContext.Session.GetString("Rol").ToString() != "2")
+            {
+                context.Result = new RedirectToRouteResult(
+                    new RouteValueDictionary
+                    {
+                        {"controller", "Home"},
+                        {"action", "ErrorRol"}
+                    }
+                );
+            }
+
+            base.OnActionExecuting(context);
+        }
+    }
+
+
+    public class ValidarAsistente : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (context.HttpContext.Session.GetString("Token") == null || context.HttpContext.Session.GetString("Rol").ToString() != "1"
+                && context.HttpContext.Session.GetString("Rol").ToString() != "3")
+            {
+                context.Result = new RedirectToRouteResult(
+                    new RouteValueDictionary
+                    {
+                        {"controller", "Home"},
+                        {"action", "ErrorRol"}
+                    }
+                );
+            }
+
+            base.OnActionExecuting(context);
+        }
+    }
+
 }

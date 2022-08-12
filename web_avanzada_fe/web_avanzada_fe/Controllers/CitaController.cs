@@ -5,6 +5,7 @@ using web_avanzada_fe.Models;
 namespace web_avanzada_fe.Controllers
 {
     [SesionUsuario]
+    [ValidarVeterinario]
     public class CitaController : Controller
     {
 

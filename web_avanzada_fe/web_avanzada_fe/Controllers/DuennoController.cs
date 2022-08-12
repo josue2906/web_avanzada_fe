@@ -5,6 +5,7 @@ using web_avanzada_fe.Entities;
 namespace web_avanzada_fe.Controllers
 {
     [SesionUsuario]
+    [ValidarVeterinario]
     public class DuennoController : Controller
     {
         private readonly IConfiguration _config;
