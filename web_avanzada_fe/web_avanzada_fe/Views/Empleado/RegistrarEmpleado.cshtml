@@ -25,10 +25,7 @@
                maxlength = 9
            })
 
-                @Html.Label("", (string)ViewBag.mensaje, new { @Class = "badge badge-danger" })
-                @Html.Hidden("mensaje", (string)ViewBag.mensaje, new { @Class = "badge badge-danger" })
-
-
+                
             </div>
             <div class="col-md-6">
                 <label class="form-label">Tipo de Usuario</label><span style="color:red">* </span>
@@ -60,6 +57,7 @@
                 <label class="bagde badge-danger" id="correo_label"></label>
             </div>
         </div>
+         @Html.Label("", (string)ViewBag.mensajeErrorEmpleado, new { @class = "badge badge-danger" })
         <div class="row mt-3">
             <div class="col-md-4">
                 <input type="submit" value="Registrar Empleado..." class="btn btn-success">
@@ -141,4 +139,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+     <script src="~/js/login.js" asp-append-version="true"></script>
+
 }

@@ -44,12 +44,30 @@ namespace web_avanzada_fe.Controllers
         {
             try
             {
+
                 string token = HttpContext.Session.GetString("Token");
+                var existe = model.ConsultarEmpleado(_config, token, empleado.idEmpleado);
+
+                if (existe.Correo != "") {
+                    ViewBag.mensajeErrorEmpleado = "Empleado ya existente";
+                
+                    ViewBag.listaRoles = new SelectList(rol.ConsultarRoles(_config, token), "idRol", "DescripcionRol");
+                    return View();
+                }
                 var datos = model.RegistrarEmpleado(_config, token, empleado);
+                if (datos.Correo != "")
+                {
+                    ViewBag.mensajeErrorEmpleado = "No se ha podido crear el empleado";
+                   
+                    ViewBag.listaRoles = new SelectList(rol.ConsultarRoles(_config, token), "idRol", "DescripcionRol");
+                    return View();
+                }
+
                 return RedirectToAction("ListaEmpleados", "Empleado");
             }
             catch
             {
+              
                 return View();
             }
         }

@@ -27,12 +27,13 @@
        autocomplete = "off",
        maxlength = 9
    })
-        @Html.Label("", (string)ViewBag.Error, new { @class = "badge badge-danger" })
+        
 
         @Html.PasswordFor(Model => Model.Contrasenna, new { type = "password", id = "pass",name="pass", placeholder = "Contraseña",onChange="VerificarEspaciosLogin()"})
-
+        
+        @Html.Label("", (string)ViewBag.IniciarSesionError, new { @class = "badge badge-danger" })
         <button type="submit" class="btn btn-primary btn-block btn-large">Iniciar Sesión </button>
-
+        
     }
 </div>
 
@@ -41,36 +42,5 @@
      <script src="~/lib/jquery/dist/jquery.min.js"></script>  
  <script src="/lib//jquery-validation/dist/jquery.validate.js"></script>  
   <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>  
-     <script> 
-         $(document).ready(function () {
-    $("#loginForm").validate(
-  //      {
-  //      rules: {
-  //          <%=cedula.UniqueID %>: {
-  //              required: true,
-  //              minlength: 3
-  //          },
-  //          <%=pass.UniqueID %>: {
-  //              required: true,
-  //          },
-  //      }
-  //  ,
-  //      messages: {
-  //<%=cedula.UniqueID %>: {
-  //              required: "aaaaaaaaaa",
-  //              minlength: "Name should be at least 3 characters"
-            
-  //      },
-  //      <%=pass.UniqueID %>: {
-  //          required: "Please enter your age"
-  //      }
-
-  //  }
-  //  }
-    );
-
-}
-);
-     </script>
      <script src="~/js/login.js" asp-append-version="true"></script>
 }
