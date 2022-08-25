@@ -65,8 +65,10 @@
                 @Html.DisplayFor(modelItem => item.Empleado)
             </td>
             <td>
-                @Html.ActionLink("Actualizar", "ActualizarCita","Cita", new {  idCita=item.idCita  }) |
-                @Html.ActionLink("Cancelar", "CancelarCita","Cita", new {   idCita=item.idCita  })
+
+                <input type="button" value="Actualizar" class="btn btn-warning" onclick="location.href = '@Url.Action("ActualizarCita", "Cita", new {idCita = @item.idCita})'" />
+                 <input type="button"  value="Cancelar" class="btn btn-danger" onclick="location.href = '@Url.Action("CancelarCita", "Cita", new {idCita = @item.idCita})'"  />
+
             </td>
         </tr>
 }

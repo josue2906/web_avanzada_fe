@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using web_avanzada_fe.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using web_avanzada_fe.Models;
 
 namespace web_avanzada_fe.Controllers
@@ -11,6 +12,9 @@ namespace web_avanzada_fe.Controllers
 
         private readonly IConfiguration _config;
         CitaModel model = new CitaModel();
+        MascotaModel modelMascota = new MascotaModel();
+        EmpleadoModel modelEmpleado = new EmpleadoModel();
+
 
         public CitaController(IConfiguration config)
         {
@@ -29,9 +33,9 @@ namespace web_avanzada_fe.Controllers
         public ActionResult RegistrarCita()
         {
             string token = HttpContext.Session.GetString("Token");
-            ViewBag.Mascotas = model.SeleccionMascotas(_config, token);
-            ViewBag.Empleados = model.SeleccionEmpleados(_config, token);
-            ViewBag.Servicios = model.SeleccionServicios(_config, token);
+            ViewBag.Mascotas = new SelectList(modelMascota.ConsultarMascotas(_config, token), "IdMascota", "NombreM");
+            ViewBag.Empleados = new SelectList(modelEmpleado.ConsultarEmpleados(_config, token), "idEmpleado", "NombreE");
+            ViewBag.Servicios = new SelectList(model.ConsultarServicios(_config, token), "idServicio", "DescripcionServicio");
             return View(new Cita());
         }
 
@@ -53,9 +57,9 @@ namespace web_avanzada_fe.Controllers
         public ActionResult ActualizarCita(int idCita)
         {
             string token = HttpContext.Session.GetString("Token");
-            ViewBag.Mascotas = model.SeleccionMascotas(_config, token);
-            ViewBag.Empleados = model.SeleccionEmpleados(_config, token);
-            ViewBag.Servicios = model.SeleccionServicios(_config, token);
+            ViewBag.Mascotas = new SelectList(modelMascota.ConsultarMascotas(_config, token), "IdMascota", "NombreM");
+            ViewBag.Empleados = new SelectList(modelEmpleado.ConsultarEmpleados(_config, token), "idEmpleado", "NombreE");
+            ViewBag.Servicios = new SelectList(model.ConsultarServicios(_config, token), "idServicio", "DescripcionServicio");
             var datos = model.ConsultarUnaCita(_config, token, idCita);
             return View(datos);
         }

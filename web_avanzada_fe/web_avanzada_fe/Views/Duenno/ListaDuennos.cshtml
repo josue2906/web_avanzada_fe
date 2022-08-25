@@ -49,7 +49,10 @@
                 @Html.DisplayFor(modelItem => item.Correo)
             </td>
             <td>
-                 @Html.ActionLink("Actualizar Dueño", "ActualizarDuenno","Duenno", new {  idDuenno=item.idDueno  })
+
+                
+                <input type="button" value="Actualizar" class="btn btn-warning" onclick="location.href = '@Url.Action("ActualizarDuenno", "Duenno",new {  idDuenno=item.idDueno})'" />
+              
             </td>
         </tr>
 }

@@ -1,5 +1,4 @@
-﻿using JN_Aplicacion.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using web_avanzada_fe.Entities;
 using web_avanzada_fe.Models;

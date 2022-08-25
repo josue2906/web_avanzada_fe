@@ -11,15 +11,21 @@
             <h3>Actualizar Cita</h3>
         </div>
                @Html.HiddenFor(model=>model.idCita)
-             <div class="form-group">
+
+           <div class="row">
+             <div class="col-md-6 form-group">
                 <label class="control-label">Mascota</label><span style="color:red">* </span>
-                  <select asp-for="idMascota" class="form-control" asp-items="@ViewBag.Mascotas"></select>                
-            </div>
-            <div class="form-group">
+                  @Html.DropDownListFor(model =>model.idMascota, ViewBag.Mascotas as SelectList,"Seleccione una mascota", new {@class="form-control",  required = "required"})
+               </div>
+            <br/>
+           <div class=" col-md-6 form-group">
                 <label class="control-label">Servicio</label><span style="color:red">* </span>
-                <select asp-for="idServicio" class="form-control" asp-items="@ViewBag.Servicios"></select>                
-            </div>
-             <div class="form-group">
+                @Html.DropDownListFor(model =>model.idServicio, ViewBag.Servicios as SelectList,"Seleccione un servicio", new {@class="form-control",  required = "required"})
+             </div>
+            <br/>
+        </div>
+           <div class="row">
+            <div class="form-group">
                 <label class="control-label">Estado</label><span style="color:red">* </span>
                  @Html.DropDownListFor(Model => Model.Estado, new List<SelectListItem> {
                  new SelectListItem { Text = "Seleccione un estado", Value = "-1"},
@@ -27,16 +33,15 @@
                    new SelectListItem { Text = "Cancelada", Value = "false"},
                 }, new { @Class = "form-control", required = "required" })          
             </div>
-        
-        
             <div class="form-group">
                 <label class="control-label">Fecha</label><span style="color:red">* </span>
                   <input type="date" asp-for="FechaCita" class="form-control" />
             </div>
             <div class="form-group">
                 <label class="control-label">Empleado</label><span style="color:red">* </span>
-                <select asp-for="idEmpleado" class="form-control" asp-items="@ViewBag.Empleados"></select>                
+                @Html.DropDownListFor(model =>model.idEmpleado, ViewBag.Empleados as SelectList,"Seleccione un empleado", new {@class="form-control",  required = "required"})
             </div>
+              </div>
 
         <div class="row mt-3">
             <div class="col-md-4">

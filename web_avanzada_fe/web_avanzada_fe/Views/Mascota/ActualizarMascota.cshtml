@@ -5,28 +5,27 @@
 }
 
 <br/>
-<h1>Actualizar Mascota</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="container mt-5">
+    <div class="row">
+        <h3>Actualizar Mascota</h3>
         <form asp-action="ActualizarMascota">
+            <div class="row">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdMascota" class="control-label"></label>
-                <input asp-for="IdMascota" class="form-control" />
-                <span asp-validation-for="IdMascota" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+
+              @Html.HiddenFor(model=>model.IdMascota)
+            <div class="col-md-6 form-group">
                 <label asp-for="idDueno" class="control-label"></label>
                 <input asp-for="idDueno" class="form-control" />
                 <span asp-validation-for="idDueno" class="text-danger"></span>
             </div>
-            <div class="form-group">
+             <div class=" col-md-6 form-group">
                 <label asp-for="NombreM" class="control-label"></label>
                 <input asp-for="NombreM" class="form-control" />
                 <span asp-validation-for="NombreM" class="text-danger"></span>
             </div>
-            <div class="form-group">
+              </div>
+               <div class="row">
+                <div class="form-group">
                 <label asp-for="Peso" class="control-label"></label>
                 <input asp-for="Peso" class="form-control" />
                 <span asp-validation-for="Peso" class="text-danger"></span>
@@ -36,14 +35,19 @@
                 <input asp-for="Raza" class="form-control" />
                 <span asp-validation-for="Raza" class="text-danger"></span>
             </div>
+            </div>
+             <div class="row">
             <div class="form-group">
                 <label asp-for="FechaNacimiento" class="control-label"></label>
                 <input asp-for="FechaNacimiento" class="form-control" />
                 <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Actualizar Mascota" class="btn btn-primary" />
+              <div class="row mt-3">
+                   <div class="form-group">
+                <input type="submit" value="Actualizar Mascota" class="btn btn-success" />
             </div>
+               </div> 
+               </div>
         </form>
     </div>
 </div>

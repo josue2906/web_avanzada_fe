@@ -65,8 +65,9 @@
                 @Html.DisplayFor(modelItem => item.Correo)
             </td>
             <td>
-                 @Html.ActionLink("Actualizar Empleado", "ActualizarEmpleado","Empleado", new {  idEmpleado=item.idEmpleado  }) |
-                @Html.ActionLink("Eliminar Empleado", "EliminarEmpleado","Empleado", new {  idEmpleado=item.idEmpleado  })
+                  <input type="button" value="Actualizar" class="btn btn-warning" onclick="location.href = '@Url.Action("ActualizarEmpleado", "Empleado",  new {  idEmpleado=item.idEmpleado  })'" />
+                 <input type="button" value="Eliminar" class="btn btn-danger" onclick="location.href = '@Url.Action("EliminarEmpleado", "Empleado",  new {  idEmpleado=item.idEmpleado  })'"  />
+
             </td>
         </tr>
 }
