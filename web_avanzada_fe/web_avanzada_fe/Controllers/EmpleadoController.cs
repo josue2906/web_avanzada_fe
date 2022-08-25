@@ -55,7 +55,7 @@ namespace web_avanzada_fe.Controllers
                     return View();
                 }
                 var datos = model.RegistrarEmpleado(_config, token, empleado);
-                if (datos.Correo != "")
+                if (datos.idEmpleado == "")
                 {
                     ViewBag.mensajeErrorEmpleado = "No se ha podido crear el empleado";
                    

@@ -44,7 +44,7 @@ namespace web_avanzada_fe.Controllers
                     return View();
                 }
                 var datos = model.RegistrarDuenno(_config, token, duenno);
-                if (datos.idDueno != "")
+                if (datos.idDueno == "")
                 {
                     ViewBag.mensajeErrorDuenno = "No se ha podido crear el dueño";
                     return View();

@@ -75,5 +75,7 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+     <script src="~/js/Empleado.js" asp-append-version="true"></script>
+}
 }
