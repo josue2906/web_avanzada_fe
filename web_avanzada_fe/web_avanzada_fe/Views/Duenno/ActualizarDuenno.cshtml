@@ -19,6 +19,7 @@
                @Class = "form-control",
                required = "required",
                onblur = "informacion_personal(this.value)",
+               @readonly="readonly",
                onChange = "VerificarEspacios()",
                autocomplete = "off",
                @onkeypress = " return validarNumeros(event);",
@@ -53,7 +54,6 @@
                 <label class="bagde badge-danger" id="correo_label"></label>
             </div>
         </div>
-        @* Html.Label("", (string)ViewBag.mensajeErrorEmpleado, new { @class = "badge badge-danger" })*@
         <div class="row mt-3">
             <div class="col-md-4">
                 <input type="submit" value="Actualizar Dueño..." class="btn btn-success">

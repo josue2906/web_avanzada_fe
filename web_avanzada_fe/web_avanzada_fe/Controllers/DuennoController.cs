@@ -37,7 +37,19 @@ namespace web_avanzada_fe.Controllers
             try
             {
                 string token = HttpContext.Session.GetString("Token");
+                var existe = model.ConsultarDuenno(_config, token, duenno.idDueno);
+                if (existe.idDueno != "")
+                {
+                    ViewBag.mensajeErrorDuenno = "Dueño ya existente";
+                    return View();
+                }
                 var datos = model.RegistrarDuenno(_config, token, duenno);
+                if (datos.idDueno != "")
+                {
+                    ViewBag.mensajeErrorDuenno = "No se ha podido crear el dueño";
+                    return View();
+                }
+
                 return RedirectToAction("ListaDuennos", "Duenno");
             }
             catch
