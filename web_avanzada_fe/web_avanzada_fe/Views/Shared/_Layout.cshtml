@@ -9,188 +9,212 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/js/Datatables/Datatables.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/web_avanzada_fe.styles.css" asp-append-version="true" />
-     @await RenderSectionAsync("Styles", required: false)
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-light bg-light fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">web_avanzada_fe</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="ListaEmpleados">Empleados</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="RegistrarEmpleado">Registrar Empleado</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="ListaDuennos">Dueños</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Duenno" asp-action="RegistrarDuenno">Registrar Dueño</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="ListaCitas">Citas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cita" asp-action="RegistrarCita">Registrar Cita</a>
-                        </li>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Vet Site</a>
+                @{
+                    if (Context.Session.GetString("Token") == null)
+                    {
+                        <div class="collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="InicioSesion">Iniciar Sesión</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                }
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Mascota" asp-action="RegistrarMascota">Mascotas</a>
-                        </li>
-                        @{if (Context.Session.GetString("Token")==null)
-                        {
-                                      <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="InicioSesion">Iniciar Sesión</a>
-                                    </li>  
-                        }}
-
-                            @{
-                                if (Context.Session.GetString("Token")!=null)
-                        {
-                                  <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="CerrarSesion">Cerrar Sesión</a>
-                                </li>  
-
-                        }
-                        }
-                    </ul>
-                </div>
+                @{
+                    if (Context.Session.GetString("Token") != null)
+                    {
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Vet Site</h5>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Empleados
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Empleado" asp-action="ListaEmpleados">Mostrar</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Empleado" asp-action="RegistrarEmpleado">Registrar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Mascotas
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Mascota" asp-action="ListaMascota">Mostrar</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Mascota" asp-action="RegistrarMascota">Registrar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Dueños
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Duenno" asp-action="ListaDuennos">Mostrar</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Duenno" asp-action="RegistrarDuenno">Registrar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Citas
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Cita" asp-action="ListaCitas">Mostrar</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Cita" asp-action="RegistrarCita">Agendar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Login" asp-action="CerrarSesion"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg> Cerrar Sesion</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                }
             </div>
         </nav>
     </header>
 
     @*
-    //<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    //    @Html.ActionLink("Veterinaria", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-    //    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    //        <span class="navbar-toggler-icon"></span>
-    //    </button>
-    //    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    //        <ul class="navbar-nav mr-auto">
+        //<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        //    @Html.ActionLink("Veterinaria", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        //    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        //        <span class="navbar-toggler-icon"></span>
+        //    </button>
+        //    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        //        <ul class="navbar-nav mr-auto">
 
 
-    //            @if (Context.Session.GetString("Token") != null)
-    //            {
+        //            @if (Context.Session.GetString("Token") != null)
+        //            {
 
-    //                <li class="nav-item dropdown">
-    //                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    //                        Citas
-    //                    </a>
-    //                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    //                        @if (Context.Session.GetString("Rol") != null)
-    //                        {
-    //                            <a href="@Url.Action("SeleccionarUnaCita", "Cita")" class="dropdown-item">
-    //                                <span>Seleccionar Una Cita</span>
-    //                            </a>
-    //                            <a href="@Url.Action("SeleccionarCitas", "Cita")" class="dropdown-item">
-    //                                <span>Seleccionar Citas</span>
-    //                            </a>
-    //                        }
+        //                <li class="nav-item dropdown">
+        //                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        //                        Citas
+        //                    </a>
+        //                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        //                        @if (Context.Session.GetString("Rol") != null)
+        //                        {
+        //                            <a href="@Url.Action("SeleccionarUnaCita", "Cita")" class="dropdown-item">
+        //                                <span>Seleccionar Una Cita</span>
+        //                            </a>
+        //                            <a href="@Url.Action("SeleccionarCitas", "Cita")" class="dropdown-item">
+        //                                <span>Seleccionar Citas</span>
+        //                            </a>
+        //                        }
 
-    //                        @if (Context.Session.GetString("Rol").ToString() == "1" || (Context.Session.GetString("Rol").ToString() == "2"))
-    //                        {
-    //                            <a href="@Url.Action("RegistrarCita", "Cita")" class="dropdown-item">
-    //                                <span>Registrar Cita</span>
-    //                            </a>
-    //                        }
-    //                    </div>
-    //                </li>
-
-
-
-    //                if (Context.Session.GetString("Rol").ToString() == "1")
-    //                {
-    //                    <li class="nav-item dropdown">
-    //                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    //                            Empleados
-    //                        </a>
-    //                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    //                            <a href="@Url.Action("ListaEmpleados", "Empleado")" class="dropdown-item">
-    //                                <span>Seleccionar Empleados</span>
-    //                            </a>
-    //                            <a href="@Url.Action("RegistrarEmpleado", "Empleado")" class="dropdown-item">
-    //                                <span>Registrar Empleados</span>
-    //                            </a>
-    //                        </div>
-    //                    </li>
-    //                }
-    //                <li class="nav-item dropdown">
-    //                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    //                        Mascotas
-    //                    </a>
-
-    //                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    //                        @if (Context.Session.GetString("Rol") != null)
-    //                        {
-    //                            <a href="@Url.Action("RegistrarMascota", "Mascota")" class="dropdown-item">
-    //                                <span>Seleccionar Pacientes</span>
-    //                            </a>
-    //                        }
-                            
-    //                        @if (Context.Session.GetString("Rol").ToString() == "1" ||Context.Session.GetString("Rol").ToString() == "3")
-    //                        {
-    //                            <a href="@Url.Action("RegistrarPaciente", "Paciente")" class="dropdown-item">
-    //                                <span>Registrar Pacientes</span>
-    //                            </a>
-    //                        }
-    //                    </div>
-    //                </li>
+        //                        @if (Context.Session.GetString("Rol").ToString() == "1" || (Context.Session.GetString("Rol").ToString() == "2"))
+        //                        {
+        //                            <a href="@Url.Action("RegistrarCita", "Cita")" class="dropdown-item">
+        //                                <span>Registrar Cita</span>
+        //                            </a>
+        //                        }
+        //                    </div>
+        //                </li>
 
 
-    //                if (Context.Session.GetString("Rol").ToString() == "1")
-    //                {
-    //                    <li class="nav-item active">
-    //                        <a class="nav-link" href="@Url.Action("SeleccionarBitacora", "Empleado")">
-    //                            <span>
-    //                                Bitácora
-    //                            </span>
-    //                        </a>
-    //                    </li>
-    //                    }
-    //                }
-    //            </ul>
-    //    </div>
-    //    @if (Context.Session.GetString("Token") == null)
-    //    {
-    //        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-    //            <ul class="navbar-nav ml-auto">
-    //                <li class="nav-item active">
-    //                    <a class="nav-link" href="@Url.Action("InicioSesion", "Login")">
-    //                        <span>
-    //                            Inicio Sesión
-    //                        </span>
-    //                    </a>
-    //                </li>
-    //            </ul>
-    //        </div>
 
-    //    }
-    //    else
-    //    {
-    //        <div class="navbar-collapse collapse w-80 dual-collapse2">
-    //            <ul class="navbar-nav ml-auto">
-    //                <li class="nav-item active">
-    //                    <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">
-    //                        <span>
-    //                            Cerrar Sesión
-    //                        </span>
-    //                    </a>
-    //                </li>
-    //            </ul>
-    //        </div>
-    //    }
-    //</nav>
-    *@ 
+        //                if (Context.Session.GetString("Rol").ToString() == "1")
+        //                {
+        //                    <li class="nav-item dropdown">
+        //                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        //                            Empleados
+        //                        </a>
+        //                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        //                            <a href="@Url.Action("ListaEmpleados", "Empleado")" class="dropdown-item">
+        //                                <span>Seleccionar Empleados</span>
+        //                            </a>
+        //                            <a href="@Url.Action("RegistrarEmpleado", "Empleado")" class="dropdown-item">
+        //                                <span>Registrar Empleados</span>
+        //                            </a>
+        //                        </div>
+        //                    </li>
+        //                }
+        //                <li class="nav-item dropdown">
+        //                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        //                        Mascotas
+        //                    </a>
+
+        //                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        //                        @if (Context.Session.GetString("Rol") != null)
+        //                        {
+        //                            <a href="@Url.Action("RegistrarMascota", "Mascota")" class="dropdown-item">
+        //                                <span>Seleccionar Pacientes</span>
+        //                            </a>
+        //                        }
+
+        //                        @if (Context.Session.GetString("Rol").ToString() == "1" ||Context.Session.GetString("Rol").ToString() == "3")
+        //                        {
+        //                            <a href="@Url.Action("RegistrarPaciente", "Paciente")" class="dropdown-item">
+        //                                <span>Registrar Pacientes</span>
+        //                            </a>
+        //                        }
+        //                    </div>
+        //                </li>
+
+
+        //                if (Context.Session.GetString("Rol").ToString() == "1")
+        //                {
+        //                    <li class="nav-item active">
+        //                        <a class="nav-link" href="@Url.Action("SeleccionarBitacora", "Empleado")">
+        //                            <span>
+        //                                Bitácora
+        //                            </span>
+        //                        </a>
+        //                    </li>
+        //                    }
+        //                }
+        //            </ul>
+        //    </div>
+        //    @if (Context.Session.GetString("Token") == null)
+        //    {
+        //        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        //            <ul class="navbar-nav ml-auto">
+        //                <li class="nav-item active">
+        //                    <a class="nav-link" href="@Url.Action("InicioSesion", "Login")">
+        //                        <span>
+        //                            Inicio Sesión
+        //                        </span>
+        //                    </a>
+        //                </li>
+        //            </ul>
+        //        </div>
+
+        //    }
+        //    else
+        //    {
+        //        <div class="navbar-collapse collapse w-80 dual-collapse2">
+        //            <ul class="navbar-nav ml-auto">
+        //                <li class="nav-item active">
+        //                    <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">
+        //                        <span>
+        //                            Cerrar Sesión
+        //                        </span>
+        //                    </a>
+        //                </li>
+        //            </ul>
+        //        </div>
+        //    }
+        //</nav>
+    *@
 
     <div class="container">
         <main role="main" class="pb-3">

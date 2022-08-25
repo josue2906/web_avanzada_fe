@@ -7,109 +7,52 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col">
-            <h3>Registrar Mascota</h3>
-            <form asp-action="RegistrarMascota">
+        <h3>Registrar Mascota</h3>
+        <form asp-action="RegistrarMascota">
+            <div class="row">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
+                <div class="col-md-6 form-group">
                     <label asp-for="idDueno" class="control-label"></label>
                     <select asp-for="idDueno" class="form-control" asp-items="@ViewBag.Duennos"></select>
                     <span asp-validation-for="idDueno" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class=" col-md-6 form-group">
                     <label asp-for="NombreM" class="control-label"></label>
-                    <input asp-for="NombreM" class="form-control" />
+                    <input asp-for="NombreM" class="form-control" onblur = "VerificarEspaciosNombre()"/>
                     <span asp-validation-for="NombreM" class="text-danger"></span>
                 </div>
+            </div>
+            <div class="row">
                 <div class="form-group">
                     <label asp-for="Peso" class="control-label"></label>
-                    <input asp-for="Peso" class="form-control" />
+                    <input asp-for="Peso" class="form-control" onblur = "VerificarPeso()"/>
                     <span asp-validation-for="Peso" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Raza" class="control-label"></label>
-                    <input asp-for="Raza" class="form-control" />
+                    <input asp-for="Raza" class="form-control" onblur="VerificarEspaciosRaza()"/>
                     <span asp-validation-for="Raza" class="text-danger"></span>
                 </div>
+            </div>
+            <div class="row">
                 <div class="form-group">
                     <label asp-for="FechaNacimiento" class="control-label"></label>
                     <input type="date" asp-for="FechaNacimiento" class="form-control" />
                     <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                 </div>
-
-                <div class="form-group">
-                    <input type="submit" value="Registrar..." class="btn btn-success" />
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <input type="submit" value="Registrar..." class="btn btn-success" />
+                    </div>
                 </div>
-            </form>
-        </div>
-        <div class="col">
-            <h3 class="mb-md-4">Listado de Mascotas</h3>
-            <div class="container pt-lg-3">
-                <table class="table" id="listaMascotas">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.IdMascota)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.NombreM)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Peso)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Raza)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.FechaNacimiento)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.idDueno)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in (ViewBag.Mascotas as IEnumerable<Mascota>))
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IdMascota)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NombreM)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Peso)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Raza)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.idDueno)
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("ActualizarMascota","Mascota", new { idMascota=item.IdMascota })">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
-@section scripts
-{
-     <script src="~/js/Funciones.js" asp-append-version="true"></script>
+@section Scripts{
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script src="~/js/Mascota.js" asp-append-version="true"></script>
 }
 
 
