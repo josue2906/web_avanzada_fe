@@ -3,25 +3,29 @@
 @{
     ViewData["Title"] = "Listado de Dueños";
 }
-
-<h1>Listado de Dueños</h1>
+<br/>
+<div class="container mt-5">
+    <div class="text-center">
+        <h3>Listado de Dueños</h3>
+    </div>
+</div>
 <table class="table" id="listaDuennos">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.idDueno)
+               Cédula
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NombreD)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ApellidosD)
+               Apellidos
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumeroTelefono)
+                Número de teléfono
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Correo)
+                Correo Electrónico
             </th>
             <th></th>
         </tr>
